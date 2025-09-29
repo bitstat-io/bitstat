@@ -2,85 +2,56 @@ import type { Game } from "./types.js";
 
 export const GAMES: Game[] = [
   {
-    id: "axie-infinity",
+    href: "axie-infinity",
     name: "Axie Infinity",
     description:
-      "Axie Infinity is a virtual world filled with cute, formidable creatures known as Axies.",
+      "Axie Infinity is a virtual world filled with cute, formhrefable creatures known as Axies.",
     category: "MOBA",
-    playerCount: 30000000,
-    imageUrl: "https://uihkeovjmvttopqxecme.supabase.co/storage/v1/object/public/bitstat/axie-infinity.jpg",
-    hasRealApi: false,
+    imageUrl:
+      "https://uihkeovjmvttopqxecme.supabase.co/storage/v1/object/public/bitstat/axie-infinity.jpg",
+  },
+  {
+    href: "#",
+    name: "Splinterlands",
+    description:
+      "Fast-paced card battles meet deep strategy, rich lore, and true ownership. In just minutes, you'll draft your team, choose your tactics, and shape your destiny.",
+    category: "MOBA",
+    imageUrl:
+      "https://uihkeovjmvttopqxecme.supabase.co/storage/v1/object/public/bitstat/splinterlands.jpg",
+  },
+  {
+    href: "#",
+    name: "Gods Unchained",
+    description:
+      "Fast-paced card battles meet deep strategy, rich lore, and true ownership. In just minutes, you'll draft your team, choose your tactics, and shape your destiny.",
+    category: "MOBA",
+    imageUrl:
+      "https://uihkeovjmvttopqxecme.supabase.co/storage/v1/object/public/bitstat/gods-unchained.webp",
+  },
+  {
+    href: "#",
+    name: "Alien Worlds",
+    description:
+      "Fast-paced card battles meet deep strategy, rich lore, and true ownership. In just minutes, you'll draft your team, choose your tactics, and shape your destiny.",
+    category: "MOBA",
+    imageUrl:
+      "https://uihkeovjmvttopqxecme.supabase.co/storage/v1/object/public/bitstat/alien-worlds.webp",
   },
 
   {
-    id: "msu",
-    name: "MSU",
-    description:
-      "Axie Infinity is a virtual world filled with cute, formidable creatures known as Axies.",
-    category: "MOBA",
-    playerCount: 30000000,
-    imageUrl: "/placeholder.svg",
-    hasRealApi: false,
-  },
-
-  {
-    id: "dota2",
-    name: "Dota 2",
-    description: "Multiplayer online battle arena with professional esports",
-    category: "MOBA",
-    playerCount: 12000000,
-    imageUrl: "/placeholder.svg",
-    hasRealApi: false,
-    // https://api.opendota.com/api/topPlayers?page=3
+    href: "#",
+    name: "Defi Kingdoms",
+    description: "",
+    category: "",
+    imageUrl:
+      "https://uihkeovjmvttopqxecme.supabase.co/storage/v1/object/public/bitstat/defi-kingdoms.webp",
   },
   {
-    id: "counter-strike",
-    name: "Counter-Strike 2",
-    description: "Tactical first-person shooter with global competitive scene",
-    category: "FPS",
-    playerCount: 30000000,
-    imageUrl: "/placeholder.svg",
-    hasRealApi: false,
-  },
-
-  {
-    id: "valorant",
-    name: "Valorant",
-    description:
-      "Character-based tactical shooter with ranked competitive play",
-    category: "FPS",
-    playerCount: 15000000,
-    imageUrl: "/placeholder.svg",
-    hasRealApi: false,
-  },
-  {
-    id: "game6",
-    name: "Valorant",
-    description:
-      "Character-based tactical shooter with ranked competitive play",
-    category: "FPS",
-    playerCount: 15000000,
-    imageUrl: "/placeholder.svg",
-    hasRealApi: false,
-  },
-  {
-    id: "game7",
-    name: "Valorant",
-    description:
-      "Character-based tactical shooter with ranked competitive play",
-    category: "FPS",
-    playerCount: 15000000,
-    imageUrl: "/placeholder.svg",
-    hasRealApi: false,
-  },
-  {
-    id: "game8",
-    name: "Valorant",
-    description:
-      "Character-based tactical shooter with ranked competitive play",
-    category: "FPS",
-    playerCount: 15000000,
-    imageUrl: "/placeholder.svg",
-    hasRealApi: false,
+    href: "#",
+    name: "Decentraland",
+    description: "",
+    category: "",
+    imageUrl:
+      "https://uihkeovjmvttopqxecme.supabase.co/storage/v1/object/public/bitstat/decentraland.jpg",
   },
 ];

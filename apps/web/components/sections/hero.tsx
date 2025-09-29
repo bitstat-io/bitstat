@@ -25,7 +25,7 @@ export default function Hero() {
           as="h1"
           className="mx-auto font-mono max-w-6xl font-extrabold text-balance text-4xl sm:text-5xl mg:text-6xl lg:text-7xl xl:text-[5.25rem] text-shadow-lg"
         >
-          UNDERSTAND PLAYERS
+          Understand Players
         </TextAnimate>
         <TextAnimate
           once
@@ -33,7 +33,7 @@ export default function Hero() {
           as="h1"
           className="mx-auto font-mono max-w-6xl font-extrabold text-balance text-4xl sm:text-5xl mg:text-6xl lg:text-7xl xl:text-[5.25rem] text-shadow-lg"
         >
-          GROW YOUR GAME
+          Grow Your Game
         </TextAnimate>
         {/* <TextAnimate
           once

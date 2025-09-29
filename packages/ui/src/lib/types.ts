@@ -1,12 +1,9 @@
 export type Game = {
-  id: string;
+  href: string;
   name: string;
   description: string;
   category: string;
-  playerCount: number;
   imageUrl: string;
-  apiEndpoint?: string;
-  hasRealApi: boolean;
 };
 
 export type NavItemsProps = {
