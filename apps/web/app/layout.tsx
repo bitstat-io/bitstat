@@ -32,11 +32,12 @@ export default function RootLayout({
             style={{
               backgroundImage: `url('${url}')`,
               backgroundRepeat: "no-repeat",
-              backgroundSize: "fix",
-              backgroundPosition: "top left",
+              backgroundSize: "cover",
+              backgroundPosition: "center center",
               backgroundAttachment: "fixed",
               minHeight: "100vh",
               width: "100%",
+              position: "relative",
             }}
           >
             <div className="bg-background/80 backdrop-blur-3xl container mx-auto">
