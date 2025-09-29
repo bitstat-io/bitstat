@@ -6,9 +6,9 @@ import Pricing from "@/components/sections/pricing";
 
 export default function Page() {
   return (
-    <>
+    <div className="container mx-auto">
       <Header />
-      <main className="container mx-auto px-4 space-y-20 mb-24">
+      <main className="space-y-20 border">
         <Hero />
         {/* <About /> */}
         <Features />
@@ -17,6 +17,6 @@ export default function Page() {
         {/* <FAQ /> */}
       </main>
       <Footer />
-    </>
+    </div>
   );
 }

@@ -45,7 +45,7 @@ export default function Header() {
   ];
 
   return (
-    <header id="headers" className="bg-background/90 backdrop-blur-md">
+    <header id="headers" className="border-x">
       <nav data-state={menuState && "active"} className="container mx-auto">
         <div className="px-6">
           <div className="relative flex flex-wrap items-center justify-between gap-6 py-3 lg:gap-0 lg:py-4">
@@ -88,7 +88,7 @@ export default function Header() {
               </ul>
             </div>
 
-            <div className="bg-background in-data-[state=active]:block lg:in-data-[state=active]:flex mb-6 hidden w-full flex-wrap items-center justify-end space-y-8 rounded-3xl border p-6 shadow-2xl shadow-zinc-300/20 md:flex-nowrap lg:m-0 lg:flex lg:w-fit lg:gap-6 lg:space-y-0 lg:p-0 lg:shadow-none dark:shadow-none">
+            <div className="in-data-[state=active]:block lg:in-data-[state=active]:flex mb-6 hidden w-full flex-wrap items-center justify-end space-y-8 rounded-3xl p-6 shadow-2xl shadow-zinc-300/20 md:flex-nowrap lg:m-0 lg:flex lg:w-fit lg:gap-6 lg:space-y-0 lg:p-0 lg:shadow-none dark:shadow-none">
               <div className="lg:hidden">
                 <ul className="space-y-6 text-base">
                   {navItems.map((item, index) => (
@@ -105,9 +105,7 @@ export default function Header() {
                   ))}
                 </ul>
               </div>
-              <div className="ml-auto">
-                <ThemeToggler />
-              </div>
+              <ThemeToggler />
             </div>
           </div>
         </div>

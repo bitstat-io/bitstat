@@ -7,7 +7,7 @@ import { ShimmerButton } from "@workspace/ui/components/shimmer-button";
 
 export default function Hero() {
   return (
-    <section id="hero" className="relative min-h-[1610px]">
+    <section id="hero" className="relative min-h-[1610px] m-4">
       {/* bg overlay */}
       <div className="absolute top-0 w-full h-30 bg-gradient-to-b from-background to-transparent z-10" />
       <div className="absolute left-0 w-40 h-full bg-gradient-to-r from-background  to-transparent z-10" />
@@ -83,7 +83,7 @@ export default function Hero() {
               </span>
             </ShimmerButton>
           </Link>
-          <Button
+          {/* <Button
             asChild
             variant="outline"
             className="rounded-full p-6 text-lg"
@@ -94,7 +94,7 @@ export default function Hero() {
             >
               Learn More
             </Link>
-          </Button>
+          </Button> */}
         </div>
         <div className="shadow-lg border rounded-md w-full p-4 bg-background h-full">
           <iframe src="/dashboard" className="size-full" />
