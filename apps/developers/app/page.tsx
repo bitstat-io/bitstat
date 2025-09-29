@@ -1,12 +1,22 @@
-import { Button } from "@workspace/ui/components/button"
+import Features from "@/components/sections/features";
+import Footer from "@/components/sections/footer";
+import Header from "@/components/sections/header";
+import Hero from "@/components/sections/hero";
+import Pricing from "@/components/sections/pricing";
 
 export default function Page() {
   return (
-    <div className="flex items-center justify-center min-h-svh">
-      <div className="flex flex-col items-center justify-center gap-4">
-        <h1 className="text-2xl font-bold">Developers Web</h1>
-        <Button size="sm">Button</Button>
-      </div>
-    </div>
-  )
+    <>
+      <Header />
+      <main className="container mx-auto px-4 space-y-20 mb-24">
+        <Hero />
+        {/* <About /> */}
+        <Features />
+        {/* <Games /> */}
+        <Pricing />
+        {/* <FAQ /> */}
+      </main>
+      <Footer />
+    </>
+  );
 }
