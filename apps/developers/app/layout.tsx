@@ -1,29 +1,36 @@
-import { Geist, Geist_Mono } from "next/font/google"
-import { Providers } from "@/components/providers"
-import "@workspace/ui/globals.css"
+import type { Metadata } from "next";
+import { Geist, Geist_Mono } from "next/font/google";
+import { Providers } from "@/components/providers";
+import "@workspace/ui/globals.css";
 
-const fontSans = Geist({
+const geistSans = Geist({
+  variable: "--font-geist-sans",
   subsets: ["latin"],
-  variable: "--font-sans",
-})
+});
 
-const fontMono = Geist_Mono({
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
   subsets: ["latin"],
-  variable: "--font-mono",
-})
+});
+
+export const metadata: Metadata = {
+  title: "Bitstat - Build Smarter Web3 Games with Data",
+  description:
+    "Comprehensive analytics and insights for Web3 game developers. Track user behavior, optimize retention, and maximize revenue with real-time data across your entire gaming ecosystem.",
+};
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode
+  children: React.ReactNode;
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${fontSans.variable} ${fontMono.variable} font-sans antialiased `}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Providers>{children}</Providers>
       </body>
     </html>
-  )
+  );
 }
