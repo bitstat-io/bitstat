@@ -26,3 +26,12 @@ export type AxiePlayer = {
   vstar: number;
   _etag: string;
 };
+
+export type AxieLeaderboardState = {
+  data: AxiePlayer[];
+  loading: boolean;
+  loadingMore: boolean;
+  hasMore: boolean;
+  offset: number;
+  total: number | null;
+};

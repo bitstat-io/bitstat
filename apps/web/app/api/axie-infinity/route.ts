@@ -1,30 +1,38 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import axios from "axios";
 
-const API_CONFIG = {
-  url: "https://api-gateway.skymavis.com/origins/v2/leaderboards",
-  headers: {
-    Accept: "application/json",
-    "X-API-KEY": process.env.AXIE_API_KEY,
-  },
-  defaultParams: {
-    seasonID: "s10-rare-era-1",
-    limit: "100",
-    offset: "0",
-  },
-};
-
-export async function GET() {
+export async function GET(request: NextRequest) {
   try {
-    // Make the API request
-    const response = await axios.get(API_CONFIG.url, {
-      headers: API_CONFIG.headers,
-    });
+    // Get query parameters from the request
+    const searchParams = request.nextUrl.searchParams;
+    const offset = searchParams.get("offset") || "0";
+    const limit = searchParams.get("limit") || "50";
+
+    // Make the API request with proper parameters
+    const response = await axios.get(
+      `https://api-gateway.skymavis.com/origins/v2/leaderboards`,
+      {
+        headers: {
+          Accept: "application/json",
+          "X-API-KEY": process.env.AXIE_API_KEY,
+        },
+        params: {
+          limit: limit,
+          offset: offset,
+        },
+      }
+    );
 
     // Return the successful response with game info
     return NextResponse.json({
       success: true,
       data: response.data,
+      pagination: {
+        offset: parseInt(offset),
+        limit: parseInt(limit),
+        total: response.data._metadata?.total || null,
+        hasNext: response.data._metadata?.hasNext || false,
+      },
     });
   } catch (error) {
     // Handle errors

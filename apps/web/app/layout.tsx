@@ -2,7 +2,6 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { Providers } from "@/components/providers";
 import Header from "@/components/sections/header";
 import Footer from "@/components/sections/footer";
-import DotGrid from "@workspace/ui/components/dot-grid";
 import "@workspace/ui/globals.css";
 
 const fontSans = Geist({
@@ -20,31 +19,29 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const url =
+    "https://uihkeovjmvttopqxecme.supabase.co/storage/v1/object/public/bitstat/axie-infinity-bg.jpg";
+
   return (
     <html lang="en" suppressHydrationWarning>
       <body
         className={`${fontSans.variable} ${fontMono.variable} font-sans antialiased `}
       >
         <Providers>
-          <div className="relative">
-            <div className="absolute inset-0 z-0 overflow-hidden">
-              <DotGrid
-                dotSize={1.5}
-                gap={15}
-                baseColor="#5227FF"
-                activeColor="#5227FF"
-                proximity={120}
-                shockRadius={250}
-                shockStrength={5}
-                resistance={750}
-                returnDuration={1.5}
-              />
-            </div>
-            <div className="relative z-10">
+          <div
+            style={{
+              backgroundImage: `url('${url}')`,
+              backgroundRepeat: "no-repeat",
+              backgroundSize: "fix",
+              backgroundPosition: "top left",
+              backgroundAttachment: "fixed",
+              minHeight: "100vh",
+              width: "100%",
+            }}
+          >
+            <div className="bg-background/80 backdrop-blur-3xl container mx-auto">
               <Header />
-
               {children}
-              <Footer />
             </div>
           </div>
         </Providers>

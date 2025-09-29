@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export default function Games() {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-4 lg:gap-6">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
       {GAMES.map((game) => (
         <GameCard key={game.id} game={game} />
       ))}
@@ -17,7 +17,7 @@ export default function Games() {
 export function GameCard({ game }: { game: Game }) {
   return (
     <Link href={`/${game.id}`}>
-      <Card className="overflow-hidden relative transition-transform duration-300 ease-in-out hover:scale-105 p-0">
+      <Card className="overflow-hidden relative transition-transform duration-300 ease-in-out hover:border-primary p-0 rounded-none">
         <Image
           src={game.imageUrl}
           alt={game.name}
