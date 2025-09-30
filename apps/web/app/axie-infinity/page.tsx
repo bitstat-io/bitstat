@@ -128,7 +128,7 @@ export default function AxieLeaderboard() {
   }, []);
 
   return (
-    <div className="border container mx-auto space-y-20 min-h-screen">
+    <div className="border-x container mx-auto space-y-20 min-h-screen">
       <div className="animate-in fade-in duration-500">
         {/* Header */}
 

@@ -10,7 +10,7 @@ export type NavItemsProps = {
   name: string;
   href: string;
   target: string;
-  icon: React.ReactNode;
+  icon?: React.ReactNode;
 };
 
 export type AxiePlayer = {
