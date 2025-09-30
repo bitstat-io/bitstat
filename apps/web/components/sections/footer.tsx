@@ -30,26 +30,12 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="#"
+                  href="https://developers.bitstat.io"
                   className="hover:text-foreground transition-colors"
                 >
-                  Bookmarks
+                  Developers
                 </Link>
               </li>
-              <li>
-                <Link
-                  href="https://developer.bitstat.io"
-                  className="hover:text-foreground transition-colors"
-                >
-                  Developer
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="font-semibold mb-4">Misc</h3>
-            <ul className="space-y-2 text-muted-foreground">
               <li>
                 <Link
                   href="https://bitstat-whitepaper.gitbook.io/bitstat-whitepaper-docs/"
@@ -59,6 +45,12 @@ export default function Footer() {
                   Docs
                 </Link>
               </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="font-semibold mb-4">Socials</h3>
+            <ul className="space-y-2 text-muted-foreground">
               <li>
                 <Link
                   href="https://x.com/bitstatofficial"

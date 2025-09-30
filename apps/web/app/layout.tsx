@@ -25,31 +25,15 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const url =
-    "https://uihkeovjmvttopqxecme.supabase.co/storage/v1/object/public/bitstat/axie-infinity-bg.jpg";
-
   return (
     <html lang="en" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Providers>
-          <div
-            style={{
-              backgroundImage: `url('${url}')`,
-              backgroundRepeat: "no-repeat",
-              backgroundSize: "cover",
-              backgroundPosition: "center center",
-              backgroundAttachment: "fixed",
-              minHeight: "100vh",
-              width: "100%",
-              position: "relative",
-            }}
-          >
-            <div className="bg-background/80 backdrop-blur-3xl container mx-auto">
-              <Header />
-              {children}
-            </div>
+          <div className="container mx-auto">
+            <Header />
+            {children}
           </div>
         </Providers>
       </body>

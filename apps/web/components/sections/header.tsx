@@ -5,7 +5,6 @@ import {
   IconBrandDiscord,
   IconBrandX,
   IconCode,
-  IconHome,
 } from "@tabler/icons-react";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
@@ -18,27 +17,38 @@ export default function Header() {
   const [menuState, setMenuState] = useState(false);
 
   const navItems: NavItemsProps[] = [
-    { name: "Home", href: "#", icon: <IconHome size={15} />, target: "" },
     {
-      name: "Bookmarks",
+      name: "Axie Infinity",
       href: "#",
       icon: <IconBookmarks size={15} />,
       target: "",
     },
     {
-      name: "Developers",
+      name: "Splinterlands",
       href: "https://developers.bitstat.io/",
       icon: <IconCode size={15} />,
       target: "_blank",
     },
     {
-      name: "X-app",
+      name: "Gods Unchained",
       href: "https://x.com/bitstatofficial",
       icon: <IconBrandX size={15} />,
       target: "_blank",
     },
     {
-      name: "Discord",
+      name: "Alien Worlds",
+      href: "https://discord.gg/kmq82Xf9",
+      icon: <IconBrandDiscord size={15} />,
+      target: "_blank",
+    },
+    {
+      name: "Defi Kingdoms",
+      href: "https://discord.gg/kmq82Xf9",
+      icon: <IconBrandDiscord size={15} />,
+      target: "_blank",
+    },
+    {
+      name: "Decentraland",
       href: "https://discord.gg/kmq82Xf9",
       icon: <IconBrandDiscord size={15} />,
       target: "_blank",
@@ -80,7 +90,7 @@ export default function Header() {
                       target={item.target}
                       className="text-muted-foreground hover:text-accent-foreground duration-150 flex items-center gap-1"
                     >
-                      {item.icon}
+                      {/* {item.icon} */}
 
                       <span>{item.name}</span>
                     </Link>

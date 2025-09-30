@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export default function Games() {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 p-4">
       {GAMES.map((game, index) => (
         <GameCard key={index} game={game} />
       ))}
@@ -25,7 +25,7 @@ export function GameCard({ game }: { game: Game }) {
           height={400}
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           loading="lazy"
-          className="w-full h-96 object-cover"
+          className="w-full h-[500px] object-cover"
         />
 
         <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent z-10" />
