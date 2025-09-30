@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function Footer() {
   return (
     <footer className="bg-card border-t border-x">
-      <div className="container mx-auto p-2 md:p-4 lg:p-6">
+      <div className="p-2 md:p-4 lg:p-6">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="col-span-1 md:col-span-2 space-y-4">
             <div className="flex items-center font-mono gap-2 text-xl font-bold">
@@ -90,7 +90,7 @@ export default function Footer() {
       </div>
       <div className="border-t border-border mt-8 py-4 flex justify-center items-center">
         <p className="text-muted-foreground text-sm text-center">
-          © 2024 Bitstat. All rights reserved.
+          © {new Date().getFullYear()} Bitstat. All rights reserved.
         </p>
       </div>
     </footer>

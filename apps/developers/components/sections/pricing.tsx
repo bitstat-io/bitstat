@@ -79,135 +79,130 @@ export default function Pricing() {
   ];
 
   return (
-    <section id="pricing" className="border-t py-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-balance">
-            Simple, Transparent Pricing
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto text-pretty mb-8">
-            Choose the perfect plan for your game development needs. Scale as
-            your player base grows.
-          </p>
+    <section id="pricing" className="py-16 border-t mt-16">
+      <div className="text-center mb-16">
+        <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-balance">
+          Simple, Transparent Pricing
+        </h2>
+        <p className="text-lg text-muted-foreground max-w-3xl mx-auto text-pretty mb-8">
+          Choose the perfect plan for your game development needs. Scale as your
+          player base grows.
+        </p>
 
-          {/* Annual/Monthly Toggle */}
-          <div className="inline-flex items-center gap-4 p-1 rounded-full bg-muted">
-            <button
-              onClick={() => setIsAnnual(false)}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
-                !isAnnual
-                  ? "bg-background text-foreground shadow-sm"
-                  : "text-muted-foreground"
-              }`}
-            >
-              Monthly
-            </button>
-            <button
-              onClick={() => setIsAnnual(true)}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
-                isAnnual
-                  ? "bg-background text-foreground shadow-sm"
-                  : "text-muted-foreground"
-              }`}
-            >
-              Annual
-              <span className="ml-2 px-2 py-1 text-xs bg-primary/10 text-primary rounded-full">
-                Save 17%
-              </span>
-            </button>
-          </div>
+        {/* Annual/Monthly Toggle */}
+        <div className="inline-flex items-center gap-4 p-1 rounded-full bg-muted">
+          <button
+            onClick={() => setIsAnnual(false)}
+            className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
+              !isAnnual
+                ? "bg-background text-foreground shadow-sm"
+                : "text-muted-foreground"
+            }`}
+          >
+            Monthly
+          </button>
+          <button
+            onClick={() => setIsAnnual(true)}
+            className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
+              isAnnual
+                ? "bg-background text-foreground shadow-sm"
+                : "text-muted-foreground"
+            }`}
+          >
+            Annual
+            <span className="ml-2 px-2 py-1 text-xs bg-primary/10 text-primary rounded-full">
+              Save 17%
+            </span>
+          </button>
         </div>
+      </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {plans.map((plan) => (
-            <Card
-              key={plan.name}
-              className={`relative p-8 ${
-                plan.popular
-                  ? "border-primary shadow-lg scale-105 bg-gradient-card"
-                  : "border-border hover:border-primary/50 transition-colors"
-              }`}
-            >
-              {plan.popular && (
-                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                  <div className="bg-primary text-primary-foreground px-4 py-1 rounded-full text-sm font-medium">
-                    Most Popular
-                  </div>
+      <div className="grid grid-cols-1 md:grid-cols-3">
+        {plans.map((plan) => (
+          <Card
+            key={plan.name}
+            className={`relative p-8 rounded-none ${
+              plan.popular
+                ? "border border-primary bg-gradient-card"
+                : "border-0 border-y"
+            }`}
+          >
+            {plan.popular && (
+              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                <div className="bg-primary text-primary-foreground px-4 py-1 rounded-full text-sm font-medium">
+                  Most Popular
                 </div>
-              )}
+              </div>
+            )}
 
-              <div className="text-center mb-8">
-                <h3 className="text-2xl font-bold">{plan.name}</h3>
-                <p className="text-muted-foreground text-sm mb-6">
-                  {plan.description}
-                </p>
+            <div className="text-center mb-8 space-y-4">
+              <h3 className="text-2xl font-bold">{plan.name}</h3>
+              <p className="text-muted-foreground text-sm mb-6">
+                {plan.description}
+              </p>
 
-                <div className="mb-6">
-                  <div className="flex items-baseline justify-center gap-2">
-                    <span className="text-4xl font-bold">
-                      $
-                      {isAnnual
-                        ? Math.floor(plan.annualPrice / 12)
-                        : plan.monthlyPrice}
-                    </span>
-                    <span className="text-muted-foreground">/month</span>
-                  </div>
-                  {isAnnual && plan.annualPrice > 0 && (
-                    <div className="text-sm text-muted-foreground mt-1">
-                      Billed annually (${plan.annualPrice}/year)
-                    </div>
-                  )}
+              <div className="mb-6">
+                <div className="flex items-baseline justify-center gap-2">
+                  <span className="text-4xl font-bold">
+                    $
+                    {isAnnual
+                      ? Math.floor(plan.annualPrice / 12)
+                      : plan.monthlyPrice}
+                  </span>
+                  <span className="text-muted-foreground">/month</span>
                 </div>
-
-                <Button
-                  size="lg"
-                  className={`w-full ${plan.popular ? "gradient-primary" : ""}`}
-                  variant={plan.popular ? "default" : "outline"}
-                >
-                  {plan.cta}
-                </Button>
+                {isAnnual && plan.annualPrice > 0 && (
+                  <div className="text-sm text-muted-foreground mt-1">
+                    Billed annually (${plan.annualPrice}/year)
+                  </div>
+                )}
               </div>
 
-              <div className="space-y-4">
+              <Button
+                size="lg"
+                className={`w-full ${plan.popular ? "gradient-primary" : ""}`}
+                variant={plan.popular ? "default" : "outline"}
+              >
+                {plan.cta}
+              </Button>
+            </div>
+
+            <div className="space-y-4">
+              <div>
+                <h4 className="font-semibold mb-3">What&apos;s included:</h4>
+                <ul className="space-y-2">
+                  {plan.features.map((feature, featureIndex) => (
+                    <li key={featureIndex} className="flex items-center gap-3">
+                      <Check className="w-4 h-4 text-green-400 flex-shrink-0" />
+                      <span className="text-sm">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {plan.limitations.length > 0 && (
                 <div>
-                  <h4 className="font-semibold mb-3">What&apos;s included:</h4>
+                  <h4 className="font-semibold mb-3 text-muted-foreground">
+                    Not included:
+                  </h4>
                   <ul className="space-y-2">
-                    {plan.features.map((feature, featureIndex) => (
+                    {plan.limitations.map((limitation, limitationIndex) => (
                       <li
-                        key={featureIndex}
+                        key={limitationIndex}
                         className="flex items-center gap-3"
                       >
-                        <Check className="w-4 h-4 text-green-400 flex-shrink-0" />
-                        <span className="text-sm">{feature}</span>
+                        <X className="w-4 h-4 text-muted-foreground flex-shrink-0" />
+                        <span className="text-sm text-muted-foreground">
+                          {limitation}
+                        </span>
                       </li>
                     ))}
                   </ul>
                 </div>
-
-                {plan.limitations.length > 0 && (
-                  <div>
-                    <h4 className="font-semibold mb-3 text-muted-foreground">
-                      Not included:
-                    </h4>
-                    <ul className="space-y-2">
-                      {plan.limitations.map((limitation, limitationIndex) => (
-                        <li
-                          key={limitationIndex}
-                          className="flex items-center gap-3"
-                        >
-                          <X className="w-4 h-4 text-muted-foreground flex-shrink-0" />
-                          <span className="text-sm text-muted-foreground">
-                            {limitation}
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-              </div>
-            </Card>
-          ))}
-        </div>
+              )}
+            </div>
+          </Card>
+        ))}
       </div>
     </section>
   );

@@ -8,7 +8,7 @@ export default function Page() {
   return (
     <div className="container mx-auto">
       <Header />
-      <main className="space-y-20 border">
+      <main className="border border-b-0">
         <Hero />
         {/* <About /> */}
         <Features />
