@@ -1,13 +1,23 @@
+"use client";
+
 import type { Game } from "@workspace/ui/lib/types";
 import { GAMES } from "@workspace/ui/lib/games-data";
 import { Card } from "@workspace/ui/components/card";
+import { useSearchParams } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function Games() {
+  const searchParams = useSearchParams();
+  const query = searchParams.get("query") || "";
+
+  const searchedGame = GAMES.filter((game) =>
+    game.name.toLowerCase().includes(query.toLowerCase())
+  );
+
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 p-4">
-      {GAMES.map((game, index) => (
+      {searchedGame.map((game, index) => (
         <GameCard key={index} game={game} />
       ))}
     </div>

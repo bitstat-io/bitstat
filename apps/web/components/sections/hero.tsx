@@ -1,5 +1,5 @@
 import { TextAnimate } from "@workspace/ui/components/text-animate";
-import { SearchBar } from "@workspace/ui/components/search-bar";
+import { SearchBar } from "../search-bar";
 import { IconBrandDiscord, IconBrandX } from "@tabler/icons-react";
 import Link from "next/link";
 
