@@ -25,6 +25,7 @@
     "debounce": "^2.2.0",
     "framer-motion": "^12.23.22",
     "gsap": "^3.13.0",
+    "ogl": "^1.0.11",
     "react-intersection-observer": "^9.16.0",
     "recharts": "^3.2.1"
   }

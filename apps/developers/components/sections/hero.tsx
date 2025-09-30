@@ -1,9 +1,8 @@
 import Link from "next/link";
 import { IconRocket } from "@tabler/icons-react";
 import { TextAnimate } from "@workspace/ui/components/text-animate";
-import { Button } from "@workspace/ui/components/button";
 import { ShimmerButton } from "@workspace/ui/components/shimmer-button";
-// import Prism from "@workspace/ui/components/prism";
+import Prism from "../prism";
 
 export default function Hero() {
   return (
@@ -15,17 +14,17 @@ export default function Hero() {
 
       {/* bg */}
       <div className="h-[900px]">
-        {/* <Prism
+        <Prism
           animationType="hover"
           timeScale={0.5}
           height={3.5}
-          baseWidth={5.5}
+          baseWidth={7}
           scale={2.5}
           hueShift={0}
           colorFrequency={1}
           noise={0}
           glow={1}
-        /> */}
+        />
       </div>
 
       {/* content */}
