@@ -38,7 +38,7 @@ export default function Header() {
     },
     {
       name: "Docs",
-      href: "https://bitstat-whitepaper.gitbook.io/bitstat-whitepaper-docs/",
+      href: "https://docs.bitstat.io",
       target: "_blank",
       icon: <IconBook size={15} />,
     },

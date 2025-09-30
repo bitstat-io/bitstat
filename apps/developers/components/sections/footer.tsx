@@ -60,7 +60,7 @@ export default function Footer() {
             <ul className="space-y-2 text-muted-foreground">
               <li>
                 <Link
-                  href="https://bitstat-whitepaper.gitbook.io/bitstat-whitepaper-docs/"
+                  href="https://docs.bitstat.io"
                   target="_blank"
                   className="hover:text-foreground transition-colors"
                 >
