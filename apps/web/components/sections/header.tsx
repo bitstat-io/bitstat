@@ -6,6 +6,8 @@ import { NavItemsProps } from "@workspace/ui/lib/types";
 import { IconLogo } from "@workspace/ui/components/logo";
 import ThemeToggler from "@workspace/ui/components/theme-toggler";
 import Link from "next/link";
+import { IconBrandDiscord, IconBrandX } from "@tabler/icons-react";
+import { Button } from "@workspace/ui/components/button";
 
 export default function Header() {
   const [menuState, setMenuState] = useState(false);
@@ -22,27 +24,17 @@ export default function Header() {
       target: "",
     },
     {
-      name: "Gods Unchained",
+      name: "Off The Grid",
       href: "#",
       target: "",
     },
     {
-      name: "Alien Worlds",
+      name: "Maple Story",
       href: "#",
       target: "",
     },
     {
-      name: "Defi Kingdoms",
-      href: "#",
-      target: "",
-    },
-    {
-      name: "Decentraland",
-      href: "#",
-      target: "",
-    },
-    {
-      name: "Battlefield 6",
+      name: "Battle Field 6",
       href: "#",
       target: "",
     },
@@ -132,7 +124,25 @@ export default function Header() {
                 ))}
               </ul>
             </div>
-            <div className="pr-4">
+            <div className="pr-4 flex items-center">
+              <Button variant="ghost" asChild className="text-muted-foreground">
+                <Link
+                  href="https://x.com/bitstatofficial"
+                  target="_blank"
+                  className="text-muted-foreground hover:text-accent-foreground duration-150 flex items-center gap-1"
+                >
+                  <IconBrandX className="h-5 w-5" />
+                </Link>
+              </Button>
+              <Button variant="ghost" asChild className="text-muted-foreground">
+                <Link
+                  href="ttps://discord.gg/kmq82Xf9"
+                  target="_blank"
+                  className="text-muted-foreground hover:text-accent-foreground duration-150 flex items-center gap-1"
+                >
+                  <IconBrandDiscord className="h-5 w-5" />
+                </Link>
+              </Button>
               <ThemeToggler />
             </div>
           </div>

@@ -21,39 +21,23 @@ export const GAMES: Game[] = [
   },
   {
     href: "#",
-    name: "Gods Unchained",
+    name: "Off The Grid",
     description:
       "Fast-paced card battles meet deep strategy, rich lore, and true ownership. In just minutes, you'll draft your team, choose your tactics, and shape your destiny.",
     category: "MOBA",
     imageUrl:
-      "https://uihkeovjmvttopqxecme.supabase.co/storage/v1/object/public/bitstat/gods-unchained.webp",
-  },
-  {
-    href: "#",
-    name: "Alien Worlds",
-    description:
-      "Fast-paced card battles meet deep strategy, rich lore, and true ownership. In just minutes, you'll draft your team, choose your tactics, and shape your destiny.",
-    category: "MOBA",
-    imageUrl:
-      "https://uihkeovjmvttopqxecme.supabase.co/storage/v1/object/public/bitstat/alien-worlds.webp",
+      "https://uihkeovjmvttopqxecme.supabase.co/storage/v1/object/public/bitstat/offthegrid.jpg",
   },
 
   {
     href: "#",
-    name: "Defi Kingdoms",
+    name: "Maple Story",
     description: "",
     category: "",
     imageUrl:
-      "https://uihkeovjmvttopqxecme.supabase.co/storage/v1/object/public/bitstat/defi-kingdoms.webp",
+      "https://uihkeovjmvttopqxecme.supabase.co/storage/v1/object/public/bitstat/maplestory.jpg",
   },
-  {
-    href: "#",
-    name: "Decentraland",
-    description: "",
-    category: "",
-    imageUrl:
-      "https://uihkeovjmvttopqxecme.supabase.co/storage/v1/object/public/bitstat/decentraland.jpg",
-  },
+
   {
     href: "#",
     name: "Battlefield 6",

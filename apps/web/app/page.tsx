@@ -5,7 +5,7 @@ import { Suspense } from "react";
 
 export default function Page() {
   return (
-    <div className="container mx-auto border-x">
+    <div className="container max-w-6xl mx-auto border-x">
       <Hero />
       <Suspense>
         <Games />
