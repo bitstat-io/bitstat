@@ -4,7 +4,7 @@ import Header from "@/components/sections/header";
 import Hero from "@/components/sections/hero";
 import Pricing from "@/components/sections/pricing";
 
-export default function Page() {
+export default async function Page() {
   return (
     <div className="container mx-auto">
       <Header />

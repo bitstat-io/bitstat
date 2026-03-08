@@ -26,3 +26,31 @@ export function getBackgroundImage(srcSet = "") {
     .join(", ");
   return `image-set(${imageSet})`;
 }
+
+export function getFirstNameFromEmail(email: string): string {
+  // Validate email format
+  if (!email || !email.includes("@")) {
+    return "";
+  }
+
+  // Extract the local part (before @)
+  const localPart = email.split("@")[0];
+
+  // Guard against undefined localPart
+  if (!localPart) {
+    return "";
+  }
+
+  // Split by common separators: . _ - and any digits
+  const nameParts = localPart.split(/[._\-0-9]+/);
+
+  // Get the first non-empty part
+  const firstName = nameParts.find((part) => part.length > 0);
+
+  if (!firstName) {
+    return "";
+  }
+
+  // Capitalize first letter, lowercase the rest
+  return firstName.charAt(0).toUpperCase() + firstName.slice(1).toLowerCase();
+}

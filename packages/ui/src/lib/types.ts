@@ -32,3 +32,14 @@ export type AxieLeaderboardState = {
   offset: number;
   total: number | null;
 };
+
+export type UserStateT = {
+  id: string;
+  email: string;
+};
+
+export type UserActionsT = {
+  fetchUserData: () => Promise<void>;
+};
+
+export type UserStoreT = UserStateT & UserActionsT;
