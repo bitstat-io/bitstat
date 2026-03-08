@@ -4,6 +4,7 @@ import {
   IconBook,
   IconDeviceGamepad2,
   IconHome,
+  IconLogin,
   IconReceipt,
 } from "@tabler/icons-react";
 import { Menu, X } from "lucide-react";
@@ -41,6 +42,12 @@ export default function Header() {
       href: "https://docs.bitstat.io",
       target: "_blank",
       icon: <IconBook size={15} />,
+    },
+    {
+      name: "Login",
+      href: "/sign-in",
+      target: "",
+      icon: <IconLogin size={15} />,
     },
   ];
 
