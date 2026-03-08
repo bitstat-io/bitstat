@@ -24,6 +24,7 @@ import { NavMain } from "./nav-main";
 import { NavUser } from "./nav-user";
 import { NavMisc } from "./nav-misc";
 import { IconLogo } from "@workspace/ui/components/logo";
+import { usePathname } from "next/navigation";
 
 const data = {
   user: {
@@ -87,6 +88,7 @@ const data = {
 };
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+  const pathname = usePathname();
   return (
     <Sidebar collapsible="icon" {...props}>
       <SidebarHeader className="border-b">
@@ -110,9 +112,11 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <NavMain items={data.navMain} />
         <NavMisc items={data.misc} />
       </SidebarContent>
-      <SidebarFooter className="border-t">
-        <NavUser />
-      </SidebarFooter>
+      {pathname === "/demo" ? null : (
+        <SidebarFooter className="border-t">
+          <NavUser />
+        </SidebarFooter>
+      )}
     </Sidebar>
   );
 }

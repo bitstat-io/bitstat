@@ -13,6 +13,7 @@ import { NavItemsProps } from "@workspace/ui/lib/types";
 import { IconLogo } from "@workspace/ui/components/logo";
 import ThemeToggler from "@workspace/ui/components/theme-toggler";
 import Link from "next/link";
+import SigninRoute from "./signin-route";
 
 export default function Header() {
   const [menuState, setMenuState] = useState(false);
@@ -42,12 +43,6 @@ export default function Header() {
       href: "https://docs.bitstat.io",
       target: "_blank",
       icon: <IconBook size={15} />,
-    },
-    {
-      name: "Login",
-      href: "/sign-in",
-      target: "",
-      icon: <IconLogin size={15} />,
     },
   ];
 
@@ -112,7 +107,10 @@ export default function Header() {
                   ))}
                 </ul>
               </div>
-              <ThemeToggler />
+              <div className="flex flex-col md:flex-row justify-start items-start md:items-center md:justify-center gap-2">
+                <ThemeToggler />
+                <SigninRoute />
+              </div>
             </div>
           </div>
         </div>

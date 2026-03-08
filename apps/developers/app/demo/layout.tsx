@@ -1,25 +1,15 @@
-"use client";
-
 import {
   SidebarInset,
   SidebarProvider,
 } from "@workspace/ui/components/sidebar";
 import { AppSidebar } from "@/components/dashboard/app-sidebar";
 import { SiteHeader } from "@/components/dashboard/site-header";
-import { useEffect } from "react";
-import { useUserStore } from "@/context/user/hook";
 
-export default function DashboardLayout({
+export default function DemoLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const { fetchUserData } = useUserStore((state) => state);
-
-  useEffect(() => {
-    fetchUserData();
-  }, []);
-
   return (
     <SidebarProvider
       style={

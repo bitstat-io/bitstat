@@ -31,8 +31,6 @@ export function NavUser() {
 
   const firstname = getFirstNameFromEmail(email);
 
-  console.log("Email: ", email);
-
   const handleLogout = async () => {
     await signout();
   };

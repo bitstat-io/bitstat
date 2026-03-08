@@ -96,7 +96,7 @@ export default function Hero() {
           </Button> */}
         </div>
         <div className="shadow-lg border rounded-md w-full p-4 bg-background h-full">
-          <iframe src="/dashboard" className="size-full" />
+          <iframe src="/demo" className="size-full" />
         </div>
       </div>
     </section>
