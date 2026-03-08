@@ -1,15 +1,16 @@
 "use client";
 
 import {
-  IconAdjustmentsDollar,
-  IconCards,
   IconDashboard,
-  IconListDetails,
-  IconMoneybag,
-  IconSettings,
-  IconTrendingUp,
-  IconUserCheck,
-  IconZoomCheck,
+  IconKey,
+  IconDeviceGamepad2,
+  // IconAdjustmentsDollar,
+  // IconCards,
+  // IconMoneybag,
+  // IconSettings,
+  // IconTrendingUp,
+  // IconUserCheck,
+  // IconZoomCheck,
 } from "@tabler/icons-react";
 import {
   Sidebar,
@@ -36,54 +37,59 @@ const data = {
   navMain: [
     {
       title: "Dashboard",
-      url: "#",
+      url: "/dashboard",
       icon: IconDashboard,
     },
     {
-      title: "Realtime Monitoring",
-      url: "#",
-      icon: IconListDetails,
+      title: "API Key",
+      url: "/dashboard/api",
+      icon: IconKey,
+    },
+    {
+      title: "Games",
+      url: "/dashboard/games",
+      icon: IconDeviceGamepad2,
     },
 
-    {
-      title: "Engagement Tracking",
-      url: "#",
-      icon: IconZoomCheck,
-    },
+    //   {
+    //     title: "Engagement Tracking",
+    //     url: "#",
+    //     icon: IconZoomCheck,
+    //   },
 
-    {
-      title: "Player Progression",
-      url: "#",
-      icon: IconTrendingUp,
-    },
-    {
-      title: "Advertising Metrics",
-      url: "#",
-      icon: IconCards,
-    },
-    {
-      title: "User Acquisition",
-      url: "#",
-      icon: IconUserCheck,
-    },
-    {
-      title: "Monetization",
-      url: "#",
-      icon: IconMoneybag,
-    },
-    {
-      title: "Resource Economy",
-      url: "#",
-      icon: IconAdjustmentsDollar,
-    },
-  ],
-  navSecondary: [],
-  misc: [
-    {
-      title: "Tools & Extension",
-      url: "#",
-      icon: IconSettings,
-    },
+    //   {
+    //     title: "Player Progression",
+    //     url: "#",
+    //     icon: IconTrendingUp,
+    //   },
+    //   {
+    //     title: "Advertising Metrics",
+    //     url: "#",
+    //     icon: IconCards,
+    //   },
+    //   {
+    //     title: "User Acquisition",
+    //     url: "#",
+    //     icon: IconUserCheck,
+    //   },
+    //   {
+    //     title: "Monetization",
+    //     url: "#",
+    //     icon: IconMoneybag,
+    //   },
+    //   {
+    //     title: "Resource Economy",
+    //     url: "#",
+    //     icon: IconAdjustmentsDollar,
+    //   },
+    // ],
+    // navSecondary: [],
+    // misc: [
+    //   {
+    //     title: "Tools & Extension",
+    //     url: "#",
+    //     icon: IconSettings,
+    //   },
   ],
 };
 
@@ -110,7 +116,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       </SidebarHeader>
       <SidebarContent className="gap-0">
         <NavMain items={data.navMain} />
-        <NavMisc items={data.misc} />
+        {/* <NavMisc items={data.misc} /> */}
       </SidebarContent>
       {pathname === "/demo" ? null : (
         <SidebarFooter className="border-t">
