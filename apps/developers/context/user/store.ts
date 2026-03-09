@@ -38,11 +38,6 @@ export const createUserStore = (initState: UserStateT = defaultInitState) => {
           id: data.id,
           email: data.email,
         });
-
-        console.log("Tests: ", {
-          id: data.id,
-          email: data.email,
-        });
       } catch (error) {
         console.log("Error: ", error);
       }
