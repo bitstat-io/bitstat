@@ -4,6 +4,7 @@ import { Button } from "@workspace/ui/components/button";
 import { Input } from "@workspace/ui/components/input";
 import { Label } from "@workspace/ui/components/label";
 import { signin } from "@/actions/auth";
+import { GoogleSigninButton } from "@/components/auth/google-signin-button";
 import { redirect } from "next/navigation";
 import { useState } from "react";
 import { Loader } from "lucide-react";
@@ -34,6 +35,13 @@ export default function LoginPage() {
         </p>
       </div>
       <div className="grid gap-6">
+        <GoogleSigninButton />
+        <div className="relative text-center text-sm">
+          <span className="bg-background text-muted-foreground relative z-10 px-2">
+            Or continue with email
+          </span>
+          <div className="bg-border absolute inset-x-0 top-1/2 h-px -translate-y-1/2" />
+        </div>
         <div className="grid gap-2">
           <Label htmlFor="email">Email</Label>
           <Input
