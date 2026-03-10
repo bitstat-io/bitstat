@@ -1,17 +1,13 @@
-"use client";
-
 import type { Game } from "@workspace/ui/lib/types";
-import { GAMES } from "@workspace/ui/lib/games-data";
 import { Card } from "@workspace/ui/components/card";
-import { useSearchParams } from "next/navigation";
+import { getMergedGames } from "@/lib/games";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function Games() {
-  const searchParams = useSearchParams();
-  const query = searchParams.get("query") || "";
+export default async function Games({ query = "" }: { query?: string }) {
+  const games = await getMergedGames();
 
-  const searchedGame = GAMES.filter((game) =>
+  const searchedGame = games.filter((game) =>
     game.name.toLowerCase().includes(query.toLowerCase())
   );
 
@@ -29,7 +25,7 @@ export default function Games() {
 
 export function GameCard({ game }: { game: Game }) {
   return (
-    <Link href={`/${game.href}`}>
+    <Link href={game.href === "#" ? "#" : `/${game.href}`}>
       <Card className="overflow-hidden relative transition-transform duration-300 ease-in-out hover:border-primary p-0 ">
         <Image
           src={game.imageUrl}
