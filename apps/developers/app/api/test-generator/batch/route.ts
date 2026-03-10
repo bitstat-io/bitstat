@@ -181,68 +181,83 @@ function buildPayload(config: GeneratorRequest) {
 }
 
 export async function POST(request: Request) {
-  const supabase = await createClient();
-  const {
-    data: { session },
-  } = await supabase.auth.getSession();
-
-  if (!session?.access_token) {
-    return Response.json(
-      { error: { code: "UNAUTHORIZED", message: "Not authenticated." } },
-      { status: 401 },
-    );
-  }
-
-  if (!API_URL) {
-    return Response.json(
-      { error: { code: "BAD_CONFIG", message: "API_URL is not configured." } },
-      { status: 500 },
-    );
-  }
-
-  const body = await request.json().catch(() => null);
-  const config = normalizeRequest(body);
-  if (!config) {
-    return Response.json(
-      { error: { code: "BAD_REQUEST", message: "Invalid generator request." } },
-      { status: 400 },
-    );
-  }
-
-  const payload = buildPayload(config);
-  const upstream = await fetch(`${API_URL}/v1/events/batch`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "X-API-Key": config.apiKey,
-    },
-    body: JSON.stringify(payload),
-    cache: "no-store",
-  });
-
-  const text = await upstream.text();
-  let parsed: unknown = null;
-
   try {
-    parsed = text ? JSON.parse(text) : null;
-  } catch {
-    parsed = null;
-  }
+    const supabase = await createClient();
+    const {
+      data: { session },
+    } = await supabase.auth.getSession();
 
-  return Response.json(
-    {
-      request: {
-        batchSize: config.batchSize,
-        playerCount: config.playerCount,
-        regions: config.regions,
-        platforms: config.platforms,
-        sessionStartRate: config.sessionStartRate,
-        matchCompleteRate: config.matchCompleteRate,
-        objectiveRate: config.objectiveRate,
+    if (!session?.access_token) {
+      return Response.json(
+        { error: { code: "UNAUTHORIZED", message: "Not authenticated." } },
+        { status: 401 },
+      );
+    }
+
+    if (!API_URL) {
+      return Response.json(
+        { error: { code: "BAD_CONFIG", message: "API_URL is not configured." } },
+        { status: 500 },
+      );
+    }
+
+    const body = await request.json().catch(() => null);
+    const config = normalizeRequest(body);
+    if (!config) {
+      return Response.json(
+        { error: { code: "BAD_REQUEST", message: "Invalid generator request." } },
+        { status: 400 },
+      );
+    }
+
+    const payload = buildPayload(config);
+    const upstream = await fetch(`${API_URL}/v1/events/batch`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-API-Key": config.apiKey,
       },
-      response: parsed,
-      raw: parsed ? undefined : text,
-    },
-    { status: upstream.status },
-  );
+      body: JSON.stringify(payload),
+      cache: "no-store",
+    });
+
+    const text = await upstream.text();
+    let parsed: unknown = null;
+
+    try {
+      parsed = text ? JSON.parse(text) : null;
+    } catch {
+      parsed = null;
+    }
+
+    return Response.json(
+      {
+        request: {
+          batchSize: config.batchSize,
+          playerCount: config.playerCount,
+          regions: config.regions,
+          platforms: config.platforms,
+          sessionStartRate: config.sessionStartRate,
+          matchCompleteRate: config.matchCompleteRate,
+          objectiveRate: config.objectiveRate,
+        },
+        response: parsed,
+        raw: parsed ? undefined : text,
+      },
+      { status: upstream.status },
+    );
+  } catch (error) {
+    return Response.json(
+      {
+        error: {
+          code: "UPSTREAM_REQUEST_FAILED",
+          message:
+            error instanceof Error
+              ? error.message
+              : "Failed to reach ingest API.",
+        },
+      },
+      { status: 502 },
+    );
+  }
 }
