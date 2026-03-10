@@ -64,9 +64,9 @@ export function GameDetail({ gameSlug }: { gameSlug: string }) {
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="relative flex size-12 items-center justify-center rounded-lg bg-secondary overflow-hidden shrink-0">
-              {game.image_url ? (
+              {game.cover_image_url ? (
                 <Image
-                  src={game.image_url}
+                  src={game.cover_image_url}
                   alt={game.name}
                   fill
                   className="object-cover"
@@ -95,10 +95,10 @@ export function GameDetail({ gameSlug }: { gameSlug: string }) {
         </CardHeader>
         <CardContent>
           <div className="flex gap-6">
-            {game.image_url && (
+            {game.cover_image_url && (
               <div className="relative shrink-0 size-24 rounded-lg bg-secondary overflow-hidden">
                 <Image
-                  src={game.image_url}
+                  src={game.cover_image_url}
                   alt={game.name}
                   fill
                   className="object-cover"
@@ -108,7 +108,9 @@ export function GameDetail({ gameSlug }: { gameSlug: string }) {
             <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 flex-1">
               <div>
                 <p className="text-xs text-muted-foreground mb-1">Type</p>
-                <Badge variant="secondary">{game.game_type}</Badge>
+                <Badge variant="secondary">
+                  {game.game_type ?? "Unspecified"}
+                </Badge>
               </div>
               <div>
                 <p className="text-xs text-muted-foreground mb-1">Created</p>

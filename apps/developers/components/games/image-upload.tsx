@@ -1,40 +1,50 @@
 "use client";
 
-import { useRef, useState } from "react";
-import { useImageUpload } from "@/hooks/use-image-upload";
+import { useEffect, useRef, useState } from "react";
+import { validateImageFile } from "@/hooks/use-image-upload";
 import { Button } from "@workspace/ui/components/button";
 import { IconLoader2, IconPhoto, IconUpload } from "@tabler/icons-react";
+import { toast } from "sonner";
 
 export function ImageUpload({
   currentUrl,
-  storagePath,
-  onUploaded,
+  file,
+  uploading = false,
+  onChange,
 }: {
   currentUrl?: string | null;
-  storagePath: string;
-  onUploaded: (url: string) => void;
+  file?: File | null;
+  uploading?: boolean;
+  onChange: (file: File | null) => void;
 }) {
-  const { upload, uploading } = useImageUpload();
   const inputRef = useRef<HTMLInputElement>(null);
   const [preview, setPreview] = useState<string | null>(currentUrl ?? null);
 
-  const handleChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
+  useEffect(() => {
+    if (!file) {
+      setPreview(currentUrl ?? null);
+      return;
+    }
 
-    // Show local preview immediately
     const objectUrl = URL.createObjectURL(file);
     setPreview(objectUrl);
 
-    const url = await upload(file, storagePath);
-    URL.revokeObjectURL(objectUrl);
+    return () => URL.revokeObjectURL(objectUrl);
+  }, [currentUrl, file]);
 
-    if (url) {
-      setPreview(url);
-      onUploaded(url);
-    } else {
-      setPreview(currentUrl ?? null);
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const nextFile = e.target.files?.[0];
+    e.target.value = "";
+
+    if (!nextFile) return;
+
+    const validationError = validateImageFile(nextFile);
+    if (validationError) {
+      toast.error(validationError);
+      return;
     }
+
+    onChange(nextFile);
   };
 
   return (

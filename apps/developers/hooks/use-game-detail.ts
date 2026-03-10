@@ -67,7 +67,11 @@ export function useGameDetail(gameSlug: string) {
   }, [loadGame, loadKeys]);
 
   const handleUpdate = useCallback(
-    async (updates: { name?: string; game_type?: string; image_url?: string }) => {
+    async (updates: {
+      name?: string;
+      game_type?: string;
+      cover_image_url?: string;
+    }) => {
       const result = await updateGame(gameSlug, updates);
       if (result.error) {
         toast.error(result.message);

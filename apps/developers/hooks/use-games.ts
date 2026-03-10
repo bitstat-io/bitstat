@@ -34,7 +34,7 @@ export function useGames() {
   }, [loadGames]);
 
   const handleCreate = useCallback(
-    async (slug: string, name: string, gameType: string, imageUrl?: string) => {
+    async (slug: string, name: string, gameType: string, imageUrl: string) => {
       const result = await createGame(slug, name, gameType, imageUrl);
       if (result.error) {
         toast.error(result.message);

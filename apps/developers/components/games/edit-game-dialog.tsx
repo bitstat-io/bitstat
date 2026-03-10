@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { type GameT } from "@/actions/games";
 import { ImageUpload } from "@/components/games/image-upload";
+import { useImageUpload } from "@/hooks/use-image-upload";
 import {
   Dialog,
   DialogContent,
@@ -25,39 +26,54 @@ export function EditGameDialog({
   onUpdate: (updates: {
     name?: string;
     game_type?: string;
-    image_url?: string;
+    cover_image_url?: string;
   }) => Promise<boolean>;
 }) {
   const [open, setOpen] = useState(false);
   const [saving, setSaving] = useState(false);
   const [name, setName] = useState(game.name);
-  const [gameType, setGameType] = useState(game.game_type);
-  const [imageUrl, setImageUrl] = useState<string | undefined>();
+  const [gameType, setGameType] = useState(game.game_type ?? "");
+  const [imageFile, setImageFile] = useState<File | null>(null);
+  const { upload, uploading } = useImageUpload();
 
   const handleOpen = (isOpen: boolean) => {
     setOpen(isOpen);
     if (isOpen) {
       setName(game.name);
-      setGameType(game.game_type);
-      setImageUrl(undefined);
+      setGameType(game.game_type ?? "");
+      setImageFile(null);
     }
   };
 
   const handleSubmit = async () => {
     if (!name.trim() || !gameType.trim()) return;
 
-    const updates: { name?: string; game_type?: string; image_url?: string } =
+    setSaving(true);
+
+    const updates: {
+      name?: string;
+      game_type?: string;
+      cover_image_url?: string;
+    } =
       {};
     if (name !== game.name) updates.name = name;
-    if (gameType !== game.game_type) updates.game_type = gameType;
-    if (imageUrl) updates.image_url = imageUrl;
+    if (gameType !== (game.game_type ?? "")) updates.game_type = gameType;
+
+    if (imageFile) {
+      const imageUrl = await upload(imageFile, `games/${game.slug}/cover`);
+      if (!imageUrl) {
+        setSaving(false);
+        return;
+      }
+      updates.cover_image_url = imageUrl;
+    }
 
     if (Object.keys(updates).length === 0) {
+      setSaving(false);
       setOpen(false);
       return;
     }
 
-    setSaving(true);
     const success = await onUpdate(updates);
     if (success) {
       setOpen(false);
@@ -88,9 +104,10 @@ export function EditGameDialog({
           <div className="flex flex-col gap-2">
             <Label className="text-sm font-medium">Cover Image</Label>
             <ImageUpload
-              currentUrl={game.image_url}
-              storagePath={`games/${game.slug}/cover`}
-              onUploaded={setImageUrl}
+              currentUrl={game.cover_image_url}
+              file={imageFile}
+              uploading={uploading}
+              onChange={setImageFile}
             />
           </div>
 
@@ -126,8 +143,13 @@ export function EditGameDialog({
         </div>
 
         <DialogFooter>
-          <Button onClick={handleSubmit} disabled={saving || !isValid}>
-            {saving && <IconLoader2 className="size-4 animate-spin" />}
+          <Button
+            onClick={handleSubmit}
+            disabled={saving || uploading || !isValid}
+          >
+            {(saving || uploading) && (
+              <IconLoader2 className="size-4 animate-spin" />
+            )}
             Save Changes
           </Button>
         </DialogFooter>

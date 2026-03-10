@@ -6,8 +6,12 @@ export type GameT = {
   id: string;
   slug: string;
   name: string;
-  game_type: string;
-  image_url?: string | null;
+  game_type: string | null;
+  cover_image_url?: string | null;
+  is_published_prod: boolean;
+  is_published_dev: boolean;
+  published_prod_at: string | null;
+  published_dev_at: string | null;
   created_at: string;
 };
 
@@ -45,12 +49,16 @@ export async function createGame(
   slug: string,
   name: string,
   gameType: string,
-  imageUrl?: string,
+  coverImageUrl: string,
 ): Promise<{ error: boolean; message: string; data: GameT | null }> {
   try {
     const headers = await getAuthHeaders();
-    const payload: Record<string, string> = { slug, name, game_type: gameType };
-    if (imageUrl) payload.image_url = imageUrl;
+    const payload: Record<string, string> = {
+      slug,
+      name,
+      game_type: gameType,
+      cover_image_url: coverImageUrl,
+    };
     const res = await fetch(`${API_URL}/v1/dashboard/games`, {
       method: "POST",
       headers,
@@ -80,7 +88,7 @@ export async function createGame(
 
 export async function updateGame(
   gameSlug: string,
-  updates: { name?: string; game_type?: string; image_url?: string },
+  updates: { name?: string; game_type?: string; cover_image_url?: string },
 ): Promise<{ error: boolean; message: string; data: GameT | null }> {
   try {
     const headers = await getAuthHeaders();

@@ -6,17 +6,25 @@ const BUCKET = "bitstat";
 const MAX_SIZE = 5 * 1024 * 1024; // 5MB
 const ACCEPTED_TYPES = ["image/png", "image/jpeg", "image/webp", "image/svg+xml"];
 
+export function validateImageFile(file: File) {
+  if (!ACCEPTED_TYPES.includes(file.type)) {
+    return "Invalid file type. Use PNG, JPG, WebP, or SVG.";
+  }
+
+  if (file.size > MAX_SIZE) {
+    return "File too large. Maximum size is 5MB.";
+  }
+
+  return null;
+}
+
 export function useImageUpload() {
   const [uploading, setUploading] = useState(false);
 
   const upload = useCallback(async (file: File, path: string) => {
-    if (!ACCEPTED_TYPES.includes(file.type)) {
-      toast.error("Invalid file type. Use PNG, JPG, WebP, or SVG.");
-      return null;
-    }
-
-    if (file.size > MAX_SIZE) {
-      toast.error("File too large. Maximum size is 5MB.");
+    const validationError = validateImageFile(file);
+    if (validationError) {
+      toast.error(validationError);
       return null;
     }
 

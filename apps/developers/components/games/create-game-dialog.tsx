@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { ImageUpload } from "@/components/games/image-upload";
+import { useImageUpload } from "@/hooks/use-image-upload";
 import {
   Dialog,
   DialogContent,
@@ -15,6 +16,7 @@ import { Button } from "@workspace/ui/components/button";
 import { Input } from "@workspace/ui/components/input";
 import { Label } from "@workspace/ui/components/label";
 import { IconLoader2, IconPlus } from "@tabler/icons-react";
+import { toast } from "sonner";
 
 export function CreateGameDialog({
   onCreate,
@@ -23,7 +25,7 @@ export function CreateGameDialog({
     slug: string,
     name: string,
     gameType: string,
-    imageUrl?: string
+    imageUrl: string
   ) => Promise<boolean>;
 }) {
   const [open, setOpen] = useState(false);
@@ -31,7 +33,8 @@ export function CreateGameDialog({
   const [name, setName] = useState("");
   const [slug, setSlug] = useState("");
   const [gameType, setGameType] = useState("");
-  const [imageUrl, setImageUrl] = useState<string | undefined>();
+  const [imageFile, setImageFile] = useState<File | null>(null);
+  const { upload, uploading } = useImageUpload();
 
   const handleNameChange = (value: string) => {
     setName(value);
@@ -45,20 +48,30 @@ export function CreateGameDialog({
 
   const handleSubmit = async () => {
     if (!name.trim() || !slug.trim() || !gameType.trim()) return;
+    if (!imageFile) {
+      toast.error("Cover image is required.");
+      return;
+    }
 
     setCreating(true);
+    const imageUrl = await upload(imageFile, `games/${slug}/cover`) ?? undefined;
+    if (!imageUrl) {
+      setCreating(false);
+      return;
+    }
+
     const success = await onCreate(slug, name, gameType, imageUrl);
     if (success) {
       setOpen(false);
       setName("");
       setSlug("");
       setGameType("");
-      setImageUrl(undefined);
+      setImageFile(null);
     }
     setCreating(false);
   };
 
-  const isValid = name.trim() && slug.trim() && gameType.trim();
+  const isValid = name.trim() && slug.trim() && gameType.trim() && imageFile;
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
@@ -80,9 +93,13 @@ export function CreateGameDialog({
           <div className="flex flex-col gap-2">
             <Label className="text-sm font-medium">Cover Image</Label>
             <ImageUpload
-              storagePath={`games/${slug || "new"}/cover`}
-              onUploaded={setImageUrl}
+              file={imageFile}
+              uploading={uploading}
+              onChange={setImageFile}
             />
+            <p className="text-xs text-muted-foreground">
+              Required. Uploaded to Supabase Storage when you create the game.
+            </p>
           </div>
 
           <div className="flex flex-col gap-2">
@@ -127,8 +144,13 @@ export function CreateGameDialog({
         </div>
 
         <DialogFooter>
-          <Button onClick={handleSubmit} disabled={creating || !isValid}>
-            {creating && <IconLoader2 className="size-4 animate-spin" />}
+          <Button
+            onClick={handleSubmit}
+            disabled={creating || uploading || !isValid}
+          >
+            {(creating || uploading) && (
+              <IconLoader2 className="size-4 animate-spin" />
+            )}
             Create Game
           </Button>
         </DialogFooter>

@@ -1,16 +1,14 @@
 "use client";
 
 import {
+  IconBook2,
   IconDashboard,
-  IconKey,
   IconDeviceGamepad2,
-  // IconAdjustmentsDollar,
-  // IconCards,
-  // IconMoneybag,
-  // IconSettings,
-  // IconTrendingUp,
-  // IconUserCheck,
-  // IconZoomCheck,
+  IconKey,
+  IconSettingsAutomation,
+  IconTerminal2,
+  IconTrophy,
+  IconUserSearch,
 } from "@tabler/icons-react";
 import {
   Sidebar,
@@ -23,7 +21,6 @@ import {
 } from "@workspace/ui/components/sidebar";
 import { NavMain } from "./nav-main";
 import { NavUser } from "./nav-user";
-import { NavMisc } from "./nav-misc";
 import { IconLogo } from "@workspace/ui/components/logo";
 import { usePathname } from "next/navigation";
 
@@ -36,60 +33,45 @@ const data = {
   },
   navMain: [
     {
-      title: "Dashboard",
+      title: "Overview",
       url: "/dashboard",
       icon: IconDashboard,
-    },
-    {
-      title: "API Key",
-      url: "/dashboard/api",
-      icon: IconKey,
     },
     {
       title: "Games",
       url: "/dashboard/games",
       icon: IconDeviceGamepad2,
     },
-
-    //   {
-    //     title: "Engagement Tracking",
-    //     url: "#",
-    //     icon: IconZoomCheck,
-    //   },
-
-    //   {
-    //     title: "Player Progression",
-    //     url: "#",
-    //     icon: IconTrendingUp,
-    //   },
-    //   {
-    //     title: "Advertising Metrics",
-    //     url: "#",
-    //     icon: IconCards,
-    //   },
-    //   {
-    //     title: "User Acquisition",
-    //     url: "#",
-    //     icon: IconUserCheck,
-    //   },
-    //   {
-    //     title: "Monetization",
-    //     url: "#",
-    //     icon: IconMoneybag,
-    //   },
-    //   {
-    //     title: "Resource Economy",
-    //     url: "#",
-    //     icon: IconAdjustmentsDollar,
-    //   },
-    // ],
-    // navSecondary: [],
-    // misc: [
-    //   {
-    //     title: "Tools & Extension",
-    //     url: "#",
-    //     icon: IconSettings,
-    //   },
+    {
+      title: "API Keys",
+      url: "/dashboard/api",
+      icon: IconKey,
+    },
+    {
+      title: "Leaderboards",
+      url: "/dashboard/leaderboards",
+      icon: IconTrophy,
+    },
+    {
+      title: "Players",
+      url: "/dashboard/players",
+      icon: IconUserSearch,
+    },
+    {
+      title: "Scoring",
+      url: "/dashboard/scoring",
+      icon: IconSettingsAutomation,
+    },
+    {
+      title: "Docs",
+      url: "/dashboard/docs",
+      icon: IconBook2,
+    },
+    {
+      title: "Ingest Simulator",
+      url: "/dashboard/test",
+      icon: IconTerminal2,
+    },
   ],
 };
 
