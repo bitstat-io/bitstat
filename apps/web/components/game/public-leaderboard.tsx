@@ -52,7 +52,7 @@ export function PublicLeaderboardView({
           </div>
         </div>
 
-        <Card className="overflow-hidden">
+        <Card className="overflow-hidden p-0">
           <div className="relative h-56 w-full bg-muted">
             <Image
               src={leaderboard.game.cover_image_url || "/window.svg"}
@@ -106,7 +106,7 @@ export function PublicLeaderboardView({
                             {entry.user_id}
                           </span>
                         </td>
-                        <td className="px-6 py-4">{entry.score.toLocaleString()}</td>
+                        <td className="px-6 py-4">{Math.floor(entry.score).toLocaleString()}</td>
                       </tr>
                     ))}
                   </tbody>
