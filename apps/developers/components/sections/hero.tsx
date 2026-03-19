@@ -69,7 +69,7 @@ export default function Hero() {
           data across your entire gaming ecosystem.
         </TextAnimate>
         <div className="flex items-center gap-4 lg:gap-8">
-          <Link href="https://bitstat.io" aria-label="Start Free Trial">
+          <Link href="/dashboard" aria-label="Start Free Trial">
             <ShimmerButton
               aria-label="Start Free Trial"
               shimmerSize="0.1em"
